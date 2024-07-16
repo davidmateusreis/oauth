@@ -1,0 +1,18 @@
+server:
+    port: 8000
+spring:
+    application:
+        name: gateway
+
+    security:
+        oauth2:
+            client:
+                registration:
+                    keycloak:
+                        client-id:
+                        client-secret:
+                        scope:
+                        redirect-uri:
+                provider:
+                    keycloak:
+                        issuer-uri: http://localhost:8080/realms/master
