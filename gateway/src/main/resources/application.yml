@@ -9,10 +9,19 @@ spring:
             client:
                 registration:
                     keycloak:
-                        client-id:
-                        client-secret:
-                        scope:
-                        redirect-uri:
+                        client-id: springboot-oauth-spa
+                        client-secret: Ka2jG9gaNDuH2bXlBzw6qnYZ6Jq9JYLc
+                        scope: openid, email, profile
+                        redirect-uri: http://localhost:3000/callback
                 provider:
                     keycloak:
                         issuer-uri: http://localhost:8080/realms/master
+    cloud:
+        gateway:
+            routes:
+                - id: resource
+                  uri: http://localhost:9000
+                  predicates:
+                        - Path=/resource
+                  filters:
+                        - TokenRelay=
